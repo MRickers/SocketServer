@@ -2,7 +2,7 @@
 #include <array>
 
 namespace socket_server {
-	const size_t server_message_buffer_size = 2048;
+	const size_t server_response_buffer_size = 2048;
 
-	using message_buffer = std::array<uint8_t, server_message_buffer_size>;
+	using ResponseBuffer = std::array<uint8_t, server_response_buffer_size>;
 }

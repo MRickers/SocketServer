@@ -1,12 +1,13 @@
 #pragma once
+#include <vector>
 #include <server/error.h>
-#include <server_constants.h>
-
 namespace socket_server {
-	using data = std::vector<uint8_t>;
+	using Response = std::vector<uint8_t>;
 
-	class SocketServerWriter {
+	class Writer {
 	public:
-		err Write(const data& data);
+		virtual ~Writer() {}
+
+		virtual err Write(const Response& data) const = 0;
 	};
 }
