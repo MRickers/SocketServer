@@ -10,8 +10,8 @@ namespace socket_server {
 		using Handler = std::function<void(const ResponseWriter writer, Request request)>;
 
 	private:
-	
+		Handler handler_;
 	public:
-		void ListenAndAccept(uint32_t port, Handler fn);
+		void ListenAndAccept(uint32_t port);
 	};
 }
