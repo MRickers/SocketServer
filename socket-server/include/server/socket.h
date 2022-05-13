@@ -14,9 +14,9 @@ namespace socket_server {
     using SocketBuffer = std::vector<uint8_t>;
     
     struct Client {
-        std::string host = "";
-        uint16_t port = 0;
-        socket_fd fd = -1;
+        std::string host{""};
+        uint16_t port{0};
+        socket_fd fd{-1};
     };
 
     class Socket {
@@ -24,7 +24,7 @@ namespace socket_server {
         virtual ~Socket() {}
 
         virtual Result<SocketBuffer> Receive() const = 0;
-        virtual err Send(const SocketBuffer& buffer) const = 0;
+        virtual Result<size_t> Send(const SocketBuffer& buffer) const = 0;
         virtual err Connect(const std::string& host, uint16_t port) = 0;
         virtual err ConnectTimeout(const std::string& host, uint16_t port, std::chrono::milliseconds timeout) = 0;
         virtual err Close() = 0;

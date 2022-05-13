@@ -3,7 +3,13 @@
 namespace socket_server {
 	enum class err {
 		ok,
-
+		tcp_connect_timeout,
+		tcp_close,
+		tcp_bind,
+		tcp_accept,
+		tcp_listen,
+		tcp_receive,
+		tcp_send,
 	};
 
 	template<typename T>

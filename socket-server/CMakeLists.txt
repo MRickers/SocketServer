@@ -40,3 +40,22 @@ set(PROJECT_INCLUDE ${CMAKE_CURRENT_LIST_DIR}/include)
 
 enable_testing()
 add_subdirectory(tests)
+
+option(build_examples "" ON)
+
+if(build_examples)
+
+if(UNIX)
+add_executable(socket_client_example 
+examples/socket_client_example.cpp
+src/socket/tcp_socket_linux.cpp)
+
+add_executable(socket_server_example 
+examples/socket_server_example.cpp
+src/socket/tcp_socket_linux.cpp)
+endif()
+
+target_include_directories(socket_client_example PRIVATE include)
+target_include_directories(socket_server_example PRIVATE include)
+
+endif()
