@@ -30,6 +30,8 @@ elseif(UNIX)
 add_compile_options(-Werror -Wall -Wextra -fstack-protector-all -Wno-unused-variables -Wformat-security -Wformat $<$<CONFIG:Debug>:-ggdb> $<$<CONFIG:Release>:-D_FORTIFY_SOURCES=2>)
 endif()
 
+find_package(Threads)
+
 set(SERVER_RESPONSE_BUFFER_SIZE 2048)
 
 message(STATUS "Server message buffer size: ${SERVER_RESPONSE_BUFFER_SIZE} B")
@@ -37,6 +39,7 @@ message(STATUS "Server message buffer size: ${SERVER_RESPONSE_BUFFER_SIZE} B")
 configure_file(${CMAKE_CURRENT_LIST_DIR}/include/server_constants.h.in ${CMAKE_CURRENT_LIST_DIR}/include/server_constants.h @ONLY)
 
 set(PROJECT_INCLUDE ${CMAKE_CURRENT_LIST_DIR}/include)
+set(SOURCE_DIR ${CMAKE_CURRENT_LIST_DIR}/src)
 
 enable_testing()
 add_subdirectory(tests)
