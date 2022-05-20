@@ -9,6 +9,7 @@ namespace socket_server {
         uint16_t port_{0};
     public:
         TcpSocket();
+        ~TcpSocket();
         TcpSocket(socket_fd fd);
         
         virtual Result<SocketBuffer> Receive() const override;

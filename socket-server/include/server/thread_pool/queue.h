@@ -43,6 +43,12 @@ namespace socket_server {
             return queue_.size();
         }
 
+        bool Empty() const {
+            const std::lock_guard<std::mutex> lock(mtx_);
+
+            return queue_.empty();
+        }
+
         void Clear() {
             const std::lock_guard<std::mutex> lock(mtx_);
 

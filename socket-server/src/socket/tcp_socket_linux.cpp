@@ -32,6 +32,10 @@ namespace socket_server {
         }
     }
 
+    TcpSocket::~TcpSocket() {
+        Close();
+    }
+
     Result<SocketBuffer> TcpSocket::Receive() const {
         const uint16_t receive_size = 0x8000;
         int16_t received = 0;

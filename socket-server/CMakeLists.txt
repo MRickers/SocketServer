@@ -56,9 +56,15 @@ src/socket/tcp_socket_linux.cpp)
 add_executable(socket_server_example 
 examples/socket_server_example.cpp
 src/socket/tcp_socket_linux.cpp)
+
+add_executable(thread_pool_example 
+examples/thread_pool_example.cpp
+src/thread_pool/thread_pool.cpp)
+target_link_libraries(thread_pool_example Threads::Threads)
 endif()
 
 target_include_directories(socket_client_example PRIVATE include)
 target_include_directories(socket_server_example PRIVATE include)
+target_include_directories(thread_pool_example PRIVATE include)
 
 endif()
